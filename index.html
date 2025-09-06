@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Calculator - Logistics Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚚 Shipping Calculator</h1>
+            <p>Calculate shipping costs and delivery estimates</p>
+        </header>
+		
+		<main>
+            <form id="shippingForm" class="calculator-form">
+                <div class="form-group">
+                    <label for="origin">Origin Address:</label>
+                    <input type="text" id="origin" name="origin" required 
+                           placeholder="Enter pickup address">
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">Destination Address:</label>
+                    <input type="text" id="destination" name="destination" required 
+                           placeholder="Enter delivery address">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weight">Package Weight (kg):</label>
+                        <input type="number" id="weight" name="weight" min="0.1" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dimensions">Dimensions (L×W×H cm):</label>
+                        <input type="text" id="dimensions" name="dimensions" 
+                               placeholder="e.g., 30x20x15" required>
+                    </div>
+                </div>
+				
+				<div class="form-row">
+                    <div class="form-group">
+                        <label for="shippingType">Shipping Type:</label>
+                        <select id="shippingType" name="shippingType" required>
+                            <option value="">Select shipping type</option>
+                            <option value="standard">Standard (5-7 days)</option>
+                            <option value="express">Express (2-3 days)</option>
+                            <option value="overnight">Overnight (1 day)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="packageType">Package Type:</label>
+                        <select id="packageType" name="packageType" required>
+                            <option value="">Select package type</option>
+                            <option value="document">Document</option>
+                            <option value="package">Package</option>
+                            <option value="fragile">Fragile</option>
+                            <option value="hazardous">Hazardous</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="insurance" name="insurance">
+                        Add Insurance Coverage
+                    </label>
+                </div>
+
+                <button type="submit" class="calculate-btn">Calculate Shipping Cost</button>
+            </form>
+
+            <div id="results" class="results-container" style="display: none;">
+                <h2>Shipping Quote</h2>
+                <div class="quote-details">
+                    <div class="quote-item">
+                        <span class="label">Base Cost:</span>
+                        <span class="value" id="baseCost">$0.00</span>
+                    </div>
+                    <div class="quote-item">
+                        <span class="label">Weight Charge:</span>
+                        <span class="value" id="weightCost">$0.00</span>
+                    </div>
+                    <div class="quote-item">
+                        <span class="label">Service Fee:</span>
+                        <span class="value" id="serviceFee">$0.00</span>
+                    </div>
+                    <div class="quote-item">
+                        <span class="label">Insurance:</span>
+                        <span class="value" id="insuranceCost">$0.00</span>
+                    </div>
+                    <div class="quote-item total">
+                        <span class="label">Total Cost:</span>
+                        <span class="value" id="totalCost">$0.00</span>
+                    </div>
+                    <div class="delivery-info">
+                        <p><strong>Estimated Delivery:</strong> <span id="deliveryDate"></span></p>
+                        <p><strong>Tracking Number:</strong> <span id="trackingNumber"></span></p>
+                    </div>
+                </div>
+                <button id="newQuote" class="secondary-btn">Calculate New Quote</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2024 Logistics Company. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="js/shipping-calculator.js"></script>
+</body>
+</html>
